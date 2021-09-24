@@ -1,0 +1,7 @@
+num,type,name,phone,id,pwd
+1,manager,김민정,01000000000,manager,manager
+2,customer,김,01012345678,kim,kim
+3,customer,민,01032146548,min,min
+4,customer,정,01045678945,jeong,jeong
+5,customer,이,01045652556,lee,lee
+6,customer,박,01089945516,park,park
