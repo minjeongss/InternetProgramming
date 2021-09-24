@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="BoardMapper">
+
+	<select id="getboardbyId" parameterType="Integer" resultType="com.jeong.model.BoardDTO">
+		SELECT * FROM board_table where id = #{id}
+	</select>
+	
+	<insert id="BoardInsert" parameterType="com.jeong.model.BoardDTO">
+		INSERT INTO board_table(perform_name,user_name,title,content,date) VALUES (#{perform_name},#{user_name},#{title},#{content},#{date})
+	</insert>
+	
+	<select id="BoardSearchAll" resultType="com.jeong.model.BoardDTO">
+		SELECT * FROM board_table
+	</select>
+	
+	<delete id="BoardDelete" parameterType="String">
+		DELETE FROM board_table WHERE id=#{id}
+	</delete>
+		
+	<update id="BoardUpdate" parameterType="BoardDTO">
+		UPDATE board_table SET perform_name = #{perform_name}, title = #{title}, content = #{content}, date = #{date} WHERE id = #{id} 
+	</update>
+</mapper>

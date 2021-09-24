@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="memberMapper">
+
+<select id="getMemberById" parameterType="String" resultType="com.jeong.model.MemberDTO">
+	SELECT * FROM user_table WHERE id = #{id}
+</select>
+
+<insert id="memberInsert" parameterType="com.jeong.model.MemberDTO">
+	INSERT INTO user_table(name,phone,id,pwd) VALUES (#{name},#{phone},#{id},#{pwd})
+</insert>
+<select id="memberSearchAll" resultType="com.jeong.model.MemberDTO">
+	SELECT * FROM user_table
+</select>
+
+<delete id="memberDelete" parameterType="String">
+	DELETE FROM user_table WHERE id=#{id}
+</delete>
+	
+<update id="memberUpdate" parameterType="MemberDTO">
+	UPDATE user_table SET name = #{name}, phone = #{phone}, id = #{id}, pwd = #{pwd} WHERE id = #{id} 
+</update>
+</mapper>

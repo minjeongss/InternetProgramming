@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="TicketMapper">
+
+	<select id="getTicketbyId" parameterType="Integer" resultType="com.jeong.model.TicketDTO">
+		SELECT * FROM ticket_table where id = #{id}
+	</select>
+	
+	<insert id="TicketInsert" parameterType="com.jeong.model.TicketDTO">
+		INSERT INTO board_table(name,date,time,seat) VALUES (#{name},#{date},#{time},#{seat})
+	</insert>
+	
+	<select id="TicketSearchAll" resultType="com.jeong.model.TicketDTO">
+		SELECT * FROM ticket_table
+	</select>
+	
+	<delete id="TicketDelete" parameterType="String">
+		DELETE FROM ticket_table WHERE id=#{id}
+	</delete>
+		
+	<update id="TicketUpdate" parameterType="TicketDTO">
+		UPDATE ticket_table SET name = #{name}, date = #{date}, time = #{time}, seat = #{seat} WHERE id = #{id} 
+	</update>
+	
+</mapper>

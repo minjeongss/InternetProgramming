@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="PerformMapper">
+
+	<select id="getPerformbyId" parameterType="Integer" resultType="com.jeong.model.PerformDTO">
+		SELECT * FROM perform_table where id = #{id}
+	</select>
+	
+	<insert id="PerformInsert" parameterType="com.jeong.model.PerformDTO">
+		INSERT INTO perform_table(name,date,time,vip_seat,r_seat,s_seat,a_seat) VALUES (#{name},#{date},#{time},#{vip_seat},#{r_seat},#{s_seat},#{a_seat})
+	</insert>
+	
+	<select id="PerformSearchAll" resultType="com.jeong.model.PerformDTO">
+		SELECT * FROM perform_table
+	</select>
+	
+	<delete id="PerformDelete" parameterType="String">
+		DELETE FROM perform_table WHERE id=#{id}
+	</delete>
+		
+	<update id="PerformUpdate" parameterType="PerformDTO">
+		UPDATE perform_table SET name = #{name}, date = #{date}, time = #{time} WHERE id = #{id} 
+	</update>
+	
+	<update id="VipSeatUpdate" parameterType="PerformDTO">
+		UPDATE perform_table SET vip_seat=vip_seat-1 WHERE id = #{id} 
+	</update>
+	
+	<update id="RSeatUpdate" parameterType="PerformDTO">
+		UPDATE perform_table SET r_seat=r_seat-1 WHERE id = #{id} 
+	</update>
+	
+	<update id="SSeatUpdate" parameterType="PerformDTO">
+		UPDATE perform_table SET s_seat=s_seat-1 WHERE id = #{id} 
+	</update>
+	
+	<update id="ASeatUpdate" parameterType="PerformDTO">
+		UPDATE perform_table SET a_seat=a_seat-1 WHERE id = #{id} 
+	</update>
+</mapper>
